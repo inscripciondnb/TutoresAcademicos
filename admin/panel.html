@@ -199,7 +199,11 @@ td small{color:var(--humo)}
       <option>Pasaje de Grado Oficiales</option>
       <option>Cursos Rescatistas Policiales</option>
     </select>
-    <div style="display:flex;gap:8px"><button class="btn" id="refreshBtn">ACTUALIZAR</button><button class="btn" id="pdfBtn" style="background:#d4a94e;color:#101112">GENERAR PDF GENERAL</button></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="refreshBtn">ACTUALIZAR</button>
+      <button class="btn" id="pdfBtn" style="background:#d4a94e;color:#101112">DESCARGAR PDF GENERAL</button>
+      <button class="btn" id="excelBtn" style="background:#217346;border-bottom-color:#8fd1a9">DESCARGAR EXCEL</button>
+    </div>
   </section>
 
   <div id="status" class="status">Cargando postulaciones...</div>
@@ -351,8 +355,27 @@ $("pdfBtn").onclick=async()=>{
     let j;
     try{j=JSON.parse(text)}catch{throw new Error("La API no devolvió JSON al generar el PDF.");}
     if(!j.ok) throw new Error(j.mensaje||"No se pudo generar el PDF.");
-    $("status").textContent="PDF general generado correctamente.";
-    if(j.url) window.open(j.url,"_blank","noopener");
+    $("status").textContent="PDF general generado correctamente. Iniciando descarga...";
+    if(!j.url) throw new Error("La API no devolvió el enlace del PDF.");
+
+    // Intenta descargar el PDF automáticamente.
+    // Si Google Drive impide la descarga directa por CORS, usa el ID del archivo
+    // para construir la URL oficial de descarga de Drive.
+    let downloadUrl = j.url;
+    const match = String(j.url).match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if(match && match[1]){
+      downloadUrl = "https://drive.google.com/uc?export=download&id=" + encodeURIComponent(match[1]);
+    }
+
+    const a = document.createElement("a");
+    a.href = downloadUrl;
+    a.download = j.nombre || "INFORME_GENERAL_TUTORES.pdf";
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    $("status").textContent="PDF general generado. La descarga se inició automáticamente.";
   }catch(e){
     $("status").textContent=e.message;
     $("status").className="status error";
@@ -361,6 +384,48 @@ $("pdfBtn").onclick=async()=>{
     btn.textContent=old;
   }
 };
+
+$("excelBtn").onclick=async()=>{
+  const btn=$("excelBtn");
+  const old=btn.textContent;
+  btn.disabled=true;
+  btn.textContent="GENERANDO...";
+  $("status").textContent="Generando Excel con todas las postulaciones...";
+  $("status").className="status";
+
+  try{
+    const url=API_URL+"?action=adminExcel&_="+Date.now();
+    const r=await fetch(url,{method:"GET",redirect:"follow"});
+    const text=await r.text();
+    let j;
+    try{j=JSON.parse(text)}catch{throw new Error("La API no devolvió JSON al generar el Excel.");}
+    if(!j.ok) throw new Error(j.mensaje||"No se pudo generar el Excel.");
+    if(!j.url) throw new Error("La API no devolvió el enlace del Excel.");
+
+    let downloadUrl=j.url;
+    const match=String(j.url).match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if(match && match[1]){
+      downloadUrl="https://drive.google.com/uc?export=download&id="+encodeURIComponent(match[1]);
+    }
+
+    const a=document.createElement("a");
+    a.href=downloadUrl;
+    a.download=j.nombre||"POSTULACIONES_TUTORES.xlsx";
+    a.style.display="none";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    $("status").textContent="Excel generado. La descarga se inició automáticamente.";
+  }catch(e){
+    $("status").textContent=e.message;
+    $("status").className="status error";
+  }finally{
+    btn.disabled=false;
+    btn.textContent=old;
+  }
+};
+
 $("search").oninput=render;$("filter").onchange=render;
 $("closeModal").onclick=()=>$("detailOverlay").classList.add("hidden");
 $("detailOverlay").addEventListener("click",e=>{if(e.target===$("detailOverlay"))$("detailOverlay").classList.add("hidden")});

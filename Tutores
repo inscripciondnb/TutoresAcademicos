@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Convocatoria · Tutores Académicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Staatliches&display=swap" rel="stylesheet">
+<style>
+:root{--carbon:#16110E;--carbon2:#201914;--carbon3:#18120f;--rojo:#C8272D;--rojoOsc:#8E1B20;--dorado:#D4A94E;--doradoSuave:#E6C77E;--crema:#F3EADB;--humo:#9A8D7E;--linea:rgba(212,169,78,.25);--ok:#4CAF7D;--err:#E05252}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,rgba(200,39,45,.18),transparent 55%),radial-gradient(ellipse at 90% 100%,rgba(212,169,78,.06),transparent 50%),var(--carbon);color:var(--crema);font-family:'Barlow',sans-serif}.shell{max-width:1180px;margin:auto;padding:0 16px 40px}.hero{padding:58px 20px 34px;text-align:center;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;left:-10%;right:-10%;top:22px;height:9px;background:var(--rojo);transform:rotate(-2deg)}.hero:after{content:"";position:absolute;left:-10%;right:-10%;top:38px;height:3px;background:var(--dorado);transform:rotate(-2deg)}.eyebrow{font-family:'Staatliches';color:var(--dorado);letter-spacing:.28em;font-size:.9rem;text-transform:uppercase}.hero h1{font-family:'Staatliches';font-weight:400;font-size:clamp(2.5rem,7vw,4.4rem);letter-spacing:.03em;line-height:.95;margin:12px 0 8px}.hero p{color:var(--humo);margin:0 auto;max-width:760px;line-height:1.55}.deadline{display:inline-flex;align-items:center;gap:9px;margin-top:18px;padding:9px 14px;border:1px solid rgba(200,39,45,.55);background:rgba(200,39,45,.10);color:var(--crema);font-weight:700}.deadline strong{color:var(--doradoSuave)}
+.layout{display:grid;grid-template-columns:.88fr 1.12fr;gap:18px;align-items:start}.card{background:var(--carbon2);border:1px solid var(--linea);border-top:4px solid var(--rojo);margin-top:14px}.card-title{font-family:'Staatliches';font-size:1.2rem;letter-spacing:.12em;color:var(--dorado);padding:15px 18px;border-bottom:1px solid var(--linea);display:flex;align-items:center;gap:10px}.card-title:before{content:"";width:5px;height:24px;background:var(--rojo);flex:0 0 auto}.card-body{padding:18px}.info-card{position:sticky;top:14px}.intro{font-size:.97rem;line-height:1.65;color:#ded3c5;margin:0}.section-label{font-family:'Staatliches';font-size:1.08rem;color:var(--dorado);letter-spacing:.08em;margin:22px 0 8px}.info-list{margin:0;padding-left:20px;color:#ded3c5;line-height:1.55}.info-list li{margin:7px 0}.callout{margin-top:18px;border:1px solid var(--linea);border-left:5px solid var(--dorado);background:rgba(212,169,78,.06);padding:14px 15px;color:var(--doradoSuave);line-height:1.5}.date-box{margin-top:18px;background:rgba(200,39,45,.08);border:1px solid rgba(200,39,45,.45);padding:15px}.date-box span{display:block;color:var(--humo);font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.date-box strong{display:block;font-family:'Staatliches';font-size:1.45rem;color:var(--crema);margin-top:4px;letter-spacing:.04em}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{margin-bottom:14px}label{display:block;margin-bottom:6px;color:var(--humo);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em}input,select,textarea{width:100%;border:1px solid var(--linea);background:var(--carbon);color:var(--crema);padding:12px;outline:none;border-radius:0;font:inherit;font-size:16px}textarea{min-height:145px;resize:vertical;line-height:1.5}input:focus,select:focus,textarea:focus{border-color:var(--dorado);box-shadow:0 0 0 1px rgba(212,169,78,.15)}select option{background:var(--carbon);color:var(--crema)}.required{color:#ff8b91}.help{background:rgba(212,169,78,.06);border:1px solid var(--linea);border-left:4px solid var(--dorado);padding:11px 12px;color:var(--doradoSuave);font-size:.88rem;margin-bottom:14px;line-height:1.45}.counter{text-align:right;color:var(--humo);font-size:.76rem;margin-top:5px}.upload-box{border:1px dashed rgba(212,169,78,.42);background:var(--carbon);padding:20px;text-align:center;transition:.2s}.upload-box:hover,.upload-box.drag{border-color:var(--dorado);background:rgba(212,169,78,.05)}.upload-icon{font-size:2rem;line-height:1;margin-bottom:8px}.upload-title{font-weight:800;color:var(--crema)}.upload-note{color:var(--humo);font-size:.82rem;margin-top:4px}.upload-box input{margin-top:12px;padding:9px;background:#120f0d}.file-state{margin-top:10px;color:var(--doradoSuave);font-size:.84rem;word-break:break-word}.check{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--linea);background:var(--carbon);padding:13px;margin:15px 0}.check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--rojo);flex:0 0 auto}.check label{margin:0;text-transform:none;letter-spacing:0;font-size:.88rem;font-weight:500;color:#d8cec0;line-height:1.45}.btn{width:100%;border:0;background:linear-gradient(160deg,var(--rojo),var(--rojoOsc));color:#fff;border-bottom:4px solid var(--dorado);font-family:'Staatliches';font-size:1.2rem;letter-spacing:.11em;padding:14px 16px;cursor:pointer}.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.55;cursor:not-allowed}.status{margin-top:12px;padding:12px;border:1px solid var(--linea);display:none;line-height:1.45}.status.ok{display:block;color:#a8e7c2;border-color:rgba(76,175,125,.35);background:rgba(76,175,125,.08)}.status.err{display:block;color:#ffb1b1;border-color:rgba(224,82,82,.35);background:rgba(224,82,82,.08)}.footer{text-align:center;color:var(--humo);font-size:.78rem;margin-top:22px;line-height:1.5}.mini-note{font-size:.8rem;color:var(--humo);margin-top:10px}.badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 7px;border:1px solid var(--linea);color:var(--doradoSuave);margin-bottom:10px}
+.multi-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.multi-option{display:flex;align-items:center;gap:11px;border:1px solid var(--linea);background:var(--carbon);padding:13px 14px;cursor:pointer;transition:.2s}.multi-option:hover{border-color:var(--dorado);background:rgba(212,169,78,.05)}.multi-option:has(input:checked){border-color:var(--rojo);background:rgba(200,39,45,.10);box-shadow:inset 4px 0 0 var(--rojo)}.multi-option input{width:19px;height:19px;margin:0;accent-color:var(--rojo);flex:0 0 auto}.multi-option span{color:var(--crema);font-weight:700;font-size:.92rem}.multi-help{color:var(--humo);font-size:.78rem;margin-top:9px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.info-card{position:static}}@media(max-width:620px){.g2,.multi-options{grid-template-columns:1fr}.shell{padding:0 10px 30px}.hero{padding-left:8px;padding-right:8px}.card-body{padding:15px}.deadline{display:flex;justify-content:center}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="hero">
+  <div class="eyebrow">Dirección Nacional de Bomberos</div>
+  <h1>Convocatoria · Tutores Académicos</h1>
+  <p>Llamado a funcionarios interesados en integrar el equipo docente y colaborar en el dictado de clases, apoyo académico y diferentes instancias de formación.</p>
+  <div class="deadline">Fecha límite: <strong>Viernes 18 de septiembre de 2026</strong></div>
+</header>
+
+<div class="layout">
+  <aside class="card info-card">
+    <div class="card-title">Información de la convocatoria</div>
+    <div class="card-body">
+      <div class="badge">Llamado a funcionarios</div>
+      <p class="intro">La presente convocatoria busca identificar funcionarios que, por su formación, conocimientos, especialización y/o experiencia profesional, cuenten con la idoneidad necesaria para transmitir sus conocimientos y contribuir al fortalecimiento de las distintas instancias de capacitación.</p>
+
+      <div class="section-label">Requisitos</div>
+      <ul class="info-list">
+        <li>Ser idóneo en la materia o área de conocimiento de interés.</li>
+        <li>Contar con conocimientos, formación y/o experiencia vinculada a dicha materia.</li>
+        <li>Presentar Currículum Vitae actualizado, detallando antecedentes académicos, capacitaciones, especializaciones y experiencia relacionada.</li>
+      </ul>
+
+      <div class="section-label">Función del Tutor Académico</div>
+      <p class="intro">Los funcionarios seleccionados podrán ser convocados para participar en el dictado de clases, apoyo académico y diferentes instancias de capacitación, de acuerdo con las necesidades y la planificación de las actividades formativas.</p>
+
+      <div class="callout">Se invita especialmente a quienes cuenten con experiencia o conocimientos específicos y tengan interés en compartir sus conocimientos y contribuir a la formación y capacitación continua del personal.</div>
+
+      <div class="date-box">
+        <span>Fecha límite para presentar postulaciones</span>
+        <strong>Viernes 18 de septiembre de 2026</strong>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <form id="applicationForm">
+      <section class="card">
+        <div class="card-title">1 · Datos del postulante</div>
+        <div class="card-body">
+          <div class="g2">
+            <div class="field"><label for="nombre">Nombre <span class="required">*</span></label><input id="nombre" name="nombre" required autocomplete="given-name" placeholder="Ingrese su nombre"></div>
+            <div class="field"><label for="apellido">Apellido <span class="required">*</span></label><input id="apellido" name="apellido" required autocomplete="family-name" placeholder="Ingrese su apellido"></div>
+          </div>
+          <div class="field"><label for="correo">Correo electrónico <span class="required">*</span></label><input id="correo" name="correo" type="email" required autocomplete="email" placeholder="correo@ejemplo.com"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">2 · Postulación académica</div>
+        <div class="card-body">
+          <div class="help">Seleccione una o varias instancias para las cuales desea presentar su postulación como Tutor Académico.</div>
+          <div class="field">
+            <label>Se postula para <span class="required">*</span></label>
+            <div class="multi-options" id="postulacionesGroup">
+              <label class="multi-option">
+                <input type="checkbox" name="postulacion" value="Licenciatura de Cadetes">
+                <span>Licenciatura de Cadetes</span>
+              </label>
+              <label class="multi-option">
+                <input type="checkbox" name="postulacion" value="Pasaje de Grado">
+                <span>Pasaje de Grado</span>
+              </label>
+              <label class="multi-option">
+                <input type="checkbox" name="postulacion" value="Escuela de Especialidades">
+                <span>Escuela de Especialidades</span>
+              </label>
+              <label class="multi-option">
+                <input type="checkbox" name="postulacion" value="Instructor de Cursos">
+                <span>Instructor de Cursos</span>
+              </label>
+            </div>
+            <div class="multi-help">Puede seleccionar más de una opción.</div>
+          </div>
+          <div class="field"><label for="materia">Materia / área de conocimiento <span class="required">*</span></label><input id="materia" name="materia" required maxlength="120" placeholder="Ej.: Derecho, Operaciones de Bomberos, Física, Gestión de Riesgos..."></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">3 · Idoneidad</div>
+        <div class="card-body">
+          <div class="help">Describa brevemente los conocimientos, formación, especialización y/o experiencia que respaldan su idoneidad en la materia o área indicada.</div>
+          <div class="field">
+            <label for="idoneidad">Breve descripción de su idoneidad <span class="required">*</span></label>
+            <textarea id="idoneidad" name="idoneidad" required maxlength="1200" placeholder="Detalle brevemente su formación, cursos, experiencia profesional, experiencia docente, especializaciones u otros antecedentes relacionados..."></textarea>
+            <div class="counter"><span id="charCount">0</span> / 1200 caracteres</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">4 · Currículum Vitae</div>
+        <div class="card-body">
+          <div class="help">Adjunte su Currículum Vitae actualizado. El documento deberá incluir antecedentes académicos, capacitaciones, especializaciones y experiencia vinculada al área de postulación.</div>
+          <div class="upload-box" id="dropZone">
+            <div class="upload-icon">📄</div>
+            <div class="upload-title">Adjuntar Currículum Vitae</div>
+            <div class="upload-note">Formatos permitidos: PDF, DOC o DOCX · Máximo 10 MB</div>
+            <input id="curriculum" name="curriculum" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+            <div class="file-state" id="fileState">Sin archivo seleccionado</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title">5 · Confirmación y envío</div>
+        <div class="card-body">
+          <div class="check">
+            <input id="declaracion" type="checkbox" required>
+            <label for="declaracion">Declaro que la información proporcionada en esta postulación es correcta y que el Currículum Vitae adjunto corresponde a mis antecedentes actuales. <span class="required">*</span></label>
+          </div>
+          <button class="btn" id="submitBtn" type="submit">Enviar postulación</button>
+          <div class="status" id="status"></div>
+          <div class="mini-note">Los campos identificados con <span class="required">*</span> son obligatorios.</div>
+        </div>
+      </section>
+    </form>
+  </main>
+</div>
+
+<div class="footer">Dirección Nacional de Bomberos · República Oriental del Uruguay<br>Convocatoria de Tutores Académicos · 2026</div>
+</div>
+
+<script>
+/*
+  PARA CONECTAR EL FORMULARIO A GOOGLE APPS SCRIPT:
+  Pegue aquí la URL terminada en /exec de su implementación.
+  Mientras quede vacío, el formulario valida todo pero NO envía información.
+*/
+const API_URL = '';
+const MAX_MB = 10;
+const $ = id => document.getElementById(id);
+
+$('idoneidad').addEventListener('input', () => {
+  $('charCount').textContent = $('idoneidad').value.length;
+});
+
+function validateFile(file){
+  if(!file) return 'Debe adjuntar su Currículum Vitae.';
+  if(file.size > MAX_MB * 1024 * 1024) return `El Currículum supera el máximo permitido de ${MAX_MB} MB.`;
+  const allowed = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ];
+  const extOk = /\.(pdf|doc|docx)$/i.test(file.name);
+  if(!allowed.includes(file.type) && !extOk) return 'Formato no permitido. Adjunte el Currículum en PDF, DOC o DOCX.';
+  return '';
+}
+
+function toBase64(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+$('curriculum').addEventListener('change', () => {
+  const f = $('curriculum').files[0];
+  $('fileState').textContent = f ? `${f.name} · ${(f.size/1024/1024).toFixed(2)} MB` : 'Sin archivo seleccionado';
+});
+
+const dropZone = $('dropZone');
+['dragenter','dragover'].forEach(evt => dropZone.addEventListener(evt, e => {e.preventDefault();dropZone.classList.add('drag')}));
+['dragleave','drop'].forEach(evt => dropZone.addEventListener(evt, e => {e.preventDefault();dropZone.classList.remove('drag')}));
+dropZone.addEventListener('drop', e => {
+  const file = e.dataTransfer.files[0];
+  if(!file) return;
+  const dt = new DataTransfer(); dt.items.add(file); $('curriculum').files = dt.files;
+  $('curriculum').dispatchEvent(new Event('change'));
+});
+
+function showError(message){
+  const s=$('status'); s.className='status err'; s.textContent=message;
+  s.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function showOk(message){
+  const s=$('status'); s.className='status ok'; s.textContent=message;
+  s.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+$('applicationForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const status=$('status'); status.className='status'; status.textContent='';
+
+  const nombre=$('nombre').value.trim();
+  const apellido=$('apellido').value.trim();
+  const correo=$('correo').value.trim();
+  const postulaciones=Array.from(document.querySelectorAll('input[name="postulacion"]:checked')).map(input => input.value);
+  const materia=$('materia').value.trim();
+  const idoneidad=$('idoneidad').value.trim();
+  const file=$('curriculum').files[0] || null;
+
+  if(!nombre || !apellido || !correo || !materia || !idoneidad){showError('Complete todos los campos obligatorios antes de enviar la postulación.');return;}
+  if(postulaciones.length === 0){showError('Debe seleccionar al menos una opción de postulación académica.');return;}
+  if(!$('declaracion').checked){showError('Debe aceptar la declaración antes de enviar la postulación.');return;}
+  const ferr=validateFile(file); if(ferr){showError(ferr);return;}
+
+  if(!API_URL){
+    showError('El formulario está listo, pero todavía falta configurar la URL de Google Apps Script (API_URL) para recibir y guardar las postulaciones.');
+    return;
+  }
+
+  const btn=$('submitBtn'); btn.disabled=true; btn.textContent='ENVIANDO POSTULACIÓN...';
+  try{
+    const base64=await toBase64(file);
+    const payload={
+      accion:'nueva_postulacion_tutor',
+      nombre, apellido, correo,
+      postulacion:postulaciones,
+      materia, idoneidad,
+      fechaCliente:new Date().toISOString(),
+      curriculum:{nombre:file.name,tipo:file.type || 'application/octet-stream',base64}
+    };
+    const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    const data=await res.json();
+    if(!data.ok) throw new Error(data.error || 'No se pudo registrar la postulación.');
+    showOk('Postulación enviada correctamente. Gracias por su interés en participar como Tutor Académico.');
+    e.target.reset(); $('charCount').textContent='0'; $('fileState').textContent='Sin archivo seleccionado';
+  }catch(err){showError(err.message || 'Ocurrió un error al enviar la postulación.');}
+  finally{btn.disabled=false;btn.textContent='ENVIAR POSTULACIÓN';}
+});
+</script>
+</body>
+</html>

@@ -202,7 +202,6 @@ td small{color:var(--humo)}
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn" id="refreshBtn">ACTUALIZAR</button>
       <button class="btn" id="pdfBtn" style="background:#d4a94e;color:#101112">DESCARGAR PDF GENERAL</button>
-      <button class="btn" id="excelBtn" style="background:#217346;border-bottom-color:#8fd1a9">DESCARGAR EXCEL</button>
     </div>
   </section>
 
@@ -391,38 +390,7 @@ $("pdfBtn").onclick=async()=>{
   }
 };
 
-$("excelBtn").onclick=async()=>{
-  const btn=$("excelBtn");
-  const old=btn.textContent;
-  btn.disabled=true;
-  btn.textContent="GENERANDO...";
-  $("status").textContent="Generando Excel con todas las postulaciones...";
-  $("status").className="status";
 
-  try{
-    const url=API_URL+"?action=adminExcel&_="+Date.now();
-    const r=await fetch(url,{method:"GET",redirect:"follow"});
-    const text=await r.text();
-    let j;
-    try{j=JSON.parse(text)}catch{throw new Error("La API no devolvió JSON al generar el Excel.");}
-    if(!j.ok) throw new Error(j.mensaje||"No se pudo generar el Excel.");
-    if(!j.base64) throw new Error("La API no devolvió el contenido del Excel.");
-
-    descargarBase64(
-      j.base64,
-      j.mimeType || "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      j.nombre || "POSTULACIONES_TUTORES.xlsx"
-    );
-
-    $("status").textContent="Excel generado y descargado correctamente.";
-  }catch(e){
-    $("status").textContent=e.message;
-    $("status").className="status error";
-  }finally{
-    btn.disabled=false;
-    btn.textContent=old;
-  }
-};
 
 $("search").oninput=render;$("filter").onchange=render;
 $("closeModal").onclick=()=>$("detailOverlay").classList.add("hidden");

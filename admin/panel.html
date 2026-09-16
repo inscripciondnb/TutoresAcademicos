@@ -37,20 +37,25 @@ input,select{width:100%;background:#111315;border:1px solid var(--line);color:va
   </header>
 
   <section class="stats">
-    <div class="stat"><b id="stTotal">0</b><span>Postulaciones</span></div>
-    <div class="stat"><b id="stCadetes">0</b><span>Licenciatura Cadetes</span></div>
-    <div class="stat"><b id="stPasaje">0</b><span>Pasaje de Grado</span></div>
+    <div class="stat"><b id="stTotal">0</b><span>Total postulaciones</span></div>
+    <div class="stat"><b id="stCadetes">0</b><span>Escuela de Cadetes</span></div>
+    <div class="stat"><b id="stFormacion">0</b><span>Escuela de Formación</span></div>
     <div class="stat"><b id="stEspecialidades">0</b><span>Esc. Especialidades</span></div>
+    <div class="stat"><b id="stSubalternos">0</b><span>Pasaje Grado Subalternos</span></div>
+    <div class="stat"><b id="stOficiales">0</b><span>Pasaje Grado Oficiales</span></div>
+    <div class="stat"><b id="stRescatistas">0</b><span>Cursos Rescatistas Policiales</span></div>
   </section>
 
   <section class="toolbar">
     <input id="search" type="search" placeholder="Buscar por nombre, apellido, correo, materia o ID...">
     <select id="filter">
       <option value="">Todas las postulaciones</option>
-      <option>Licenciatura de Cadetes</option>
-      <option>Pasaje de Grado</option>
+      <option>Escuela de Cadetes</option>
+      <option>Escuela de Formación</option>
       <option>Escuela de Especialidades</option>
-      <option>Instructor de Cursos</option>
+      <option>Pasaje de Grado Subalternos</option>
+      <option>Pasaje de Grado Oficiales</option>
+      <option>Cursos Rescatistas Policiales</option>
     </select>
     <div style="display:flex;gap:8px"><button class="btn" id="refreshBtn">ACTUALIZAR</button><button class="btn" id="pdfBtn" style="background:#d4a94e;color:#101112">GENERAR PDF GENERAL</button></div>
   </section>
@@ -112,9 +117,12 @@ function render(){
   });
 
   $("stTotal").textContent=DATA.length;
-  $("stCadetes").textContent=DATA.filter(x=>arr(x.postulacion).includes("Licenciatura de Cadetes")).length;
-  $("stPasaje").textContent=DATA.filter(x=>arr(x.postulacion).includes("Pasaje de Grado")).length;
+  $("stCadetes").textContent=DATA.filter(x=>arr(x.postulacion).includes("Escuela de Cadetes")).length;
+  $("stFormacion").textContent=DATA.filter(x=>arr(x.postulacion).includes("Escuela de Formación")).length;
   $("stEspecialidades").textContent=DATA.filter(x=>arr(x.postulacion).includes("Escuela de Especialidades")).length;
+  $("stSubalternos").textContent=DATA.filter(x=>arr(x.postulacion).includes("Pasaje de Grado Subalternos")).length;
+  $("stOficiales").textContent=DATA.filter(x=>arr(x.postulacion).includes("Pasaje de Grado Oficiales")).length;
+  $("stRescatistas").textContent=DATA.filter(x=>arr(x.postulacion).includes("Cursos Rescatistas Policiales")).length;
 
   $("tbody").innerHTML=filtered.length?filtered.map((x,i)=>`
     <tr>
